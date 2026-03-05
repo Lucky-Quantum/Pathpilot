@@ -20,7 +20,11 @@ import { checkUser } from "@/lib/checkUser";
 import PathPilotLogo from "./pathpilot-logo";
 
 export default async function Header() {
-  await checkUser();
+  try {
+    await checkUser();
+  } catch (error) {
+    console.error("Error in Header checkUser:", error);
+  }
 
   return (
     <header className="fixed top-0 w-full border-b bg-background/80 backdrop-blur-md z-50 supports-[backdrop-filter]:bg-background/60">
