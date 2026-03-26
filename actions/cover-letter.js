@@ -45,9 +45,8 @@ export async function generateCoverLetter(data) {
   if (!user) throw new Error("User not found");
 
   const prompt = `
-    Write a professional cover letter for a ${data.jobTitle} position at ${
-    data.companyName
-  }.
+    Write a professional cover letter for a ${data.jobTitle} position at ${data.companyName
+    }.
     
     About the candidate:
     - Industry: ${user.industry}
@@ -93,41 +92,51 @@ export async function generateCoverLetter(data) {
 }
 
 export async function getCoverLetters() {
-  const { userId } = await auth();
-  if (!userId) throw new Error("Unauthorized");
+  try {
+    const { userId } = await auth();
+    if (!userId) throw new Error("Unauthorized");
 
-  const user = await db.user.findUnique({
-    where: { clerkUserId: userId },
-  });
+    const user = await db.user.findUnique({
+      where: { clerkUserId: userId },
+    });
 
-  if (!user) throw new Error("User not found");
+    if (!user) throw new Error("User not found");
 
-  return await db.coverLetter.findMany({
-    where: {
-      userId: user.id,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+    return await db.coverLetter.findMany({
+      where: {
+        userId: user.id,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+  } catch (error) {
+    console.error("Error fetching cover letters:", error.message);
+    throw new Error("Failed to fetch cover letters: " + error.message);
+  }
 }
 
 export async function getCoverLetter(id) {
-  const { userId } = await auth();
-  if (!userId) throw new Error("Unauthorized");
+  try {
+    const { userId } = await auth();
+    if (!userId) throw new Error("Unauthorized");
 
-  const user = await db.user.findUnique({
-    where: { clerkUserId: userId },
-  });
+    const user = await db.user.findUnique({
+      where: { clerkUserId: userId },
+    });
 
-  if (!user) throw new Error("User not found");
+    if (!user) throw new Error("User not found");
 
-  return await db.coverLetter.findUnique({
-    where: {
-      id,
-      userId: user.id,
-    },
-  });
+    return await db.coverLetter.findUnique({
+      where: {
+        id,
+        userId: user.id,
+      },
+    });
+  } catch (error) {
+    console.error("Error fetching cover letter:", error.message);
+    throw new Error("Failed to fetch cover letter: " + error.message);
+  }
 }
 
 export async function deleteCoverLetter(id) {

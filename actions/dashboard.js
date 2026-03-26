@@ -76,7 +76,7 @@ export async function getIndustryInsights() {
     if (!user) {
       throw new Error("User not found");
     }
-    
+
     if (!user.industry) {
       throw new Error("User industry not set");
     }
@@ -84,24 +84,43 @@ export async function getIndustryInsights() {
     // Check if insights already exist for this industry
     let industryInsight = await db.industryInsight.findUnique({
       where: { industry: user.industry },
+    }).catch(err => {
+      console.error("Database findUnique error:", err);
+      return null;
     });
 
     // If no insights exist, generate them
     if (!industryInsight) {
-      const insights = await generateAIInsights(user.industry);
+      try {
+        const insights = await generateAIInsights(user.industry);
 
-      industryInsight = await db.industryInsight.create({
-        data: {
+        industryInsight = await db.industryInsight.create({
+          data: {
+            industry: user.industry,
+            ...insights,
+            nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+          },
+        });
+      } catch (aiError) {
+        console.error("Error generating AI insights:", aiError);
+        // Return a default response if AI generation fails
+        return {
           industry: user.industry,
-          ...insights,
-          nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-        },
-      });
+          salaryRanges: [],
+          growthRate: 0,
+          demandLevel: "Unknown",
+          topSkills: [],
+          marketOutlook: "Unknown",
+          keyTrends: [],
+          recommendedSkills: [],
+        };
+      }
     }
 
     return industryInsight;
   } catch (error) {
-    console.error("Error in getIndustryInsights:", error.message);
+    console.error("Error in getIndustryInsights:", error);
+    console.error("Error details:", error.message, error.stack);
     throw error;
   }
 }
