@@ -1,0 +1,41 @@
+<svg width="100%" viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    
+    <linearGradient id="nodeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1D9E75"/>
+      <stop offset="100%" stop-color="#0F6E56"/>
+    </linearGradient>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M2 2L8 5L2 8" fill="none" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  <mask id="imagine-text-gaps-mgm2nd" maskUnits="userSpaceOnUse"><rect x="0" y="0" width="680" height="320" fill="white"/><rect x="318" y="134.0647430419922" width="129.17072296142578" height="77.29127502441406" fill="black" rx="2"/><rect x="492.9999694824219" y="132.82032775878906" width="165.40858459472656" height="75.78011322021484" fill="black" rx="2"/><rect x="317.2444152832031" y="214.1774444580078" width="223.55284118652344" height="16.089282035827637" fill="black" rx="2"/></mask></defs>
+
+  <!-- Icon mark: abstract path with nodes -->
+  <!-- Track line -->
+  <path d="M80 195 Q130 130 200 160 Q255 185 290 145" fill="none" stroke="#E1F5EE" stroke-width="2" opacity="0.4" style="fill:none;stroke:rgb(225, 245, 238);color:rgb(255, 255, 255);stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.4;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <path d="M80 195 Q130 130 200 160 Q255 185 290 145" fill="none" stroke="#1D9E75" stroke-width="2" stroke-dasharray="4 4" opacity="0.5" marker-end="url(#arr2)" style="fill:none;stroke:rgb(29, 158, 117);color:rgb(255, 255, 255);stroke-width:2px;stroke-dasharray:4px, 4px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.5;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Nodes on path -->
+  <!-- Node 1 (start) -->
+  <circle cx="80" cy="195" r="7" fill="url(#nodeGrad)" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <circle cx="80" cy="195" r="11" fill="none" stroke="#1D9E75" stroke-width="1" opacity="0.3" style="fill:none;stroke:rgb(29, 158, 117);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.3;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Node 2 (mid) -->
+  <circle cx="200" cy="160" r="5" fill="#5DCAA5" style="fill:rgb(93, 202, 165);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Node 3 (current — solid accent) -->
+  <circle cx="290" cy="145" r="9" fill="url(#nodeGrad)" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <circle cx="290" cy="145" r="14" fill="none" stroke="#1D9E75" stroke-width="1" opacity="0.25" style="fill:none;stroke:rgb(29, 158, 117);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.25;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- inner dot -->
+  <circle cx="290" cy="145" r="3" fill="#fff" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Wordmark -->
+  <text x="322" y="195" fill="var(--color-text-primary)" style="fill:rgb(250, 249, 245);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;DM Serif Display&quot;, Georgia, serif;font-size:64px;font-weight:400;text-anchor:start;dominant-baseline:auto">path</text>
+  <text x="497" y="193" fill="#1D9E75" style="fill:rgb(29, 158, 117);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Space Grotesk&quot;, &quot;Helvetica Neue&quot;, sans-serif;font-size:64px;font-weight:300;text-anchor:start;dominant-baseline:auto">pilot</text>
+
+  <!-- Hairline divider -->
+  <line x1="322" y1="208" x2="608" y2="208" stroke="var(--color-border-tertiary)" stroke-width="0.5" mask="url(#imagine-text-gaps-mgm2nd)" style="fill:rgb(0, 0, 0);stroke:rgba(222, 220, 209, 0.15);color:rgb(255, 255, 255);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Tagline -->
+  <text x="322" y="226" fill="var(--color-text-secondary)" opacity="0.6" style="fill:rgb(194, 192, 182);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.6;font-family:&quot;Space Grotesk&quot;, sans-serif;font-size:11px;font-weight:500;text-anchor:start;dominant-baseline:auto">YOUR JOURNEY, GUIDED</text>
+</svg>
