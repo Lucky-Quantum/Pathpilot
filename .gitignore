@@ -33,9 +33,15 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 .setup-env.bat
+setup-env.bat
+set-db-url.ps1
+*.ps1
+*.bat
 
 # vercel
 .vercel
+.env.production
+.env.vercel.*
 
 # typescript
 *.tsbuildinfo
