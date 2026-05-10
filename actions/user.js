@@ -30,7 +30,7 @@ export async function updateUser(data) {
         if (!industryInsight) {
           const insights = await generateAIInsights(data.industry);
 
-          industryInsight = await db.industryInsight.create({
+          industryInsight = await tx.industryInsight.create({
             data: {
               industry: data.industry,
               ...insights,
@@ -59,8 +59,8 @@ export async function updateUser(data) {
       }
     );
 
-    revalidatePath("/");
-    return result.user;
+revalidatePath("/");
+     return result.updatedUser;
   } catch (error) {
     console.error("Error updating user and industry:", error.message);
     throw new Error("Failed to update profile");
