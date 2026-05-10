@@ -12,7 +12,7 @@ async function callOpenRouter(prompt) {
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
-      "HTTP-Referer": "https://pathpilot.vercel.app",
+      "HTTP-Referer": "https://pathpilot-lake.vercel.app/",
       "X-Title": "PathPilot",
     },
     body: JSON.stringify({
@@ -23,14 +23,16 @@ async function callOpenRouter(prompt) {
           content: prompt
         }
       ],
+      max_tokens: 1200,
     }),
   });
 
+  const data = await response.json();
+  
   if (!response.ok) {
-    throw new Error(`OpenRouter API error: ${response.statusText}`);
+    throw new Error(data.error?.message || `OpenRouter API error: ${response.statusText}`);
   }
 
-  const data = await response.json();
   return data.choices[0].message.content;
 }
 
@@ -49,7 +51,7 @@ export async function generateQuiz() {
   if (!user) throw new Error("User not found");
 
   const prompt = `
-    Generate 10 technical interview questions for a ${
+    Generate 5 technical interview questions for a ${
       user.industry
     } professional${
     user.skills?.length ? ` with expertise in ${user.skills.join(", ")}` : ""
@@ -70,16 +72,52 @@ export async function generateQuiz() {
     }
   `;
 
+  let result;
   try {
-    const result = await callOpenRouter(prompt);
-    const text = result;
-    const cleanedText = text.replace(/```(?:json)?\n?/g, "").trim();
-    const quiz = JSON.parse(cleanedText);
+    result = await callOpenRouter(prompt);
+    let text = result.trim();
+    
+    // Remove markdown code blocks
+    text = text.replace(/```json/g, "").replace(/```/g, "").trim();
+    
+    // Try to parse directly first
+    let quiz;
+    try {
+      quiz = JSON.parse(text);
+    } catch {
+      // Try to extract JSON object from text - use greedy match with stack-based balancing
+      let braceCount = 0;
+      let startIndex = -1;
+      for (let i = 0; i < text.length; i++) {
+        if (text[i] === '{') {
+          if (braceCount === 0) startIndex = i;
+          braceCount++;
+        } else if (text[i] === '}') {
+          braceCount--;
+          if (braceCount === 0 && startIndex !== -1) {
+            try {
+              quiz = JSON.parse(text.substring(startIndex, i + 1));
+              break;
+            } catch {
+              continue;
+            }
+          }
+        }
+      }
+      if (!quiz) {
+        throw new Error("No valid JSON found");
+      }
+    }
 
-    return quiz.questions;
+    return quiz.questions || [];
   } catch (error) {
     console.error("Error generating quiz:", error);
-    throw new Error("Failed to generate quiz questions");
+    console.error("Raw response:", result);
+    console.error("Prompt sent:", prompt);
+    if (error instanceof SyntaxError) {
+      throw new Error(`Unexpected response format from AI. Response: ${result?.substring(0, 200)}... Please try again.`);
+    }
+    throw new Error("Failed to generate quiz questions: " + error.message);
   }
 }
 
