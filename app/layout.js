@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 import Header from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { dark } from "@clerk/themes";
+import CareerCoachChat from "@/components/career-coach-chat";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,12 +37,13 @@ export default function RootLayout({ children }) {
             <Header />
             <main className="min-h-screen">{children}</main>
             <Toaster richColors />
+            <CareerCoachChat />
 
-            <footer className="bg-muted/50 py-12">
-              <div className="container mx-auto px-4 text-center text-gray-200">
-                <p style={{ color: 'sky blue' }}>Made with 💗 by Pathpilot Team</p>
-              </div>
-            </footer>
+<footer className="bg-muted/50 py-12">
+  <div className="container mx-auto px-4 text-center text-gray-200">
+    <p>&copy; 2026 Pathpilot | BS CSDA IIT Patna Semester 2 Capstone Project</p>
+  </div>
+</footer>
           </ThemeProvider>
         </body>
       </html>
