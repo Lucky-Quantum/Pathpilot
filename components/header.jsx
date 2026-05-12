@@ -92,13 +92,7 @@ export default function Header() {
                </DropdownMenuContent>
              </DropdownMenu>
              
-             {/* About Us Link */}
-             <Link href="/aboutus">
-               <Button variant="ghost" className="hidden md:inline-flex items-center gap-2">
-                 <i className="fa-solid fa-circle-info"></i>
-                 About Us
-               </Button>
-             </Link>
+             
            </SignedIn>
 
            <SignedOut>
