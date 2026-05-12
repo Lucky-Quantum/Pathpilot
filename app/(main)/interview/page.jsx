@@ -4,7 +4,13 @@ import PerformanceChart from "./_components/performace-chart";
 import QuizList from "./_components/quiz-list";
 
 export default async function InterviewPrepPage() {
-  const assessments = await getAssessments();
+  let assessments = [];
+
+  try {
+    assessments = await getAssessments();
+  } catch (error) {
+    console.error("[InterviewPrepPage] Error fetching assessments:", error);
+  }
 
   return (
     <div>

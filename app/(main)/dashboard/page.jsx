@@ -4,15 +4,26 @@ import { getUserOnboardingStatus } from "@/actions/user";
 import { redirect } from "next/navigation";
 
 export default async function DashboardPage() {
-  const { isOnboarded } = await getUserOnboardingStatus();
+  let isOnboarded = false;
 
-  // If not onboarded, redirect to onboarding page
-  // Skip this check if already on the onboarding page
+  try {
+    const status = await getUserOnboardingStatus();
+    isOnboarded = status.isOnboarded;
+  } catch (error) {
+    console.error("[DashboardPage] Error checking onboarding status:", error);
+  }
+
   if (!isOnboarded) {
     redirect("/onboarding");
   }
 
-  const insights = await getIndustryInsights();
+  let insights = [];
+
+  try {
+    insights = await getIndustryInsights();
+  } catch (error) {
+    console.error("[DashboardPage] Error fetching insights:", error);
+  }
 
   return (
     <div className="container mx-auto">

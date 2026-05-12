@@ -101,7 +101,7 @@ const AI_FEATURES = [
   },
 ];
 
-export default function BehindTheBuild() {
+export default function AboutUs() {
   const [activeTeamMember, setActiveTeamMember] = useState(null);
   const [scrollY, setScrollY] = useState(0);
   const progressRef = useRef(null);
