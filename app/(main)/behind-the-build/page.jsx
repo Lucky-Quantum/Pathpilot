@@ -5,59 +5,59 @@ import Link from 'next/link';
 
 const TEAM = [
   {
-    name: 'Alex Johnson',
+    name: 'Lucky kumar',
     role: 'Project Lead & Full Stack Developer',
-    initials: 'AJ',
+    initials: 'LK',
     color: 'from-violet-500 to-purple-600',
     bg: 'bg-violet-100 dark:bg-violet-900/30',
     text: 'text-violet-700 dark:text-violet-300',
     contributions: ['System Architecture', 'Database Design', 'API Development'],
-    github: '#',
-    linkedin: '#',
+    github: 'https://github.com/Lucky-Quantum',
+    linkedin: 'https://www.linkedin.com/in/lucky-888310378',
   },
   {
-    name: 'Priya Sharma',
+    name: 'Kishan Kumar',
     role: 'Frontend Developer & UI/UX Designer',
-    initials: 'PS',
+    initials: 'KK',
     color: 'from-pink-500 to-rose-600',
     bg: 'bg-pink-100 dark:bg-pink-900/30',
     text: 'text-pink-700 dark:text-pink-300',
     contributions: ['UI Components', 'Responsive Design', 'User Experience'],
-    github: '#',
-    linkedin: '#',
+    github: 'https://github.com/Kishan-Kumar',
+    linkedin: 'https://www.linkedin.com/in/kishan-kumar-888310378',
   },
   {
-    name: 'Rahul Verma',
-    role: 'AI/ML Engineer',
-    initials: 'RV',
+    name: 'Manikchand Kumar',
+    role: 'AI integration & Prompt Engineer',
+    initials: 'MK',
     color: 'from-blue-500 to-cyan-600',
     bg: 'bg-blue-100 dark:bg-blue-900/30',
     text: 'text-blue-700 dark:text-blue-300',
     contributions: ['AI Integration', 'Prompt Engineering', 'OpenRouter API'],
-    github: '#',
-    linkedin: '#',
+    github: 'https://github.com/manikarya52-gif',
+    linkedin: 'https://www.linkedin.com/in/manik-arya-4a037a3a6',
   },
   {
-    name: 'Sneha Patel',
+    name: 'Kunal Kumar',
     role: 'Backend Developer & DevOps',
-    initials: 'SP',
+    initials: 'KK',
     color: 'from-emerald-500 to-teal-600',
     bg: 'bg-emerald-100 dark:bg-emerald-900/30',
     text: 'text-emerald-700 dark:text-emerald-300',
     contributions: ['Vercel Deployment', 'Supabase Setup', 'Auth & Security'],
-    github: '#',
-    linkedin: '#',
+    github: 'https://github.com/Kunal-Kumar',
+    linkedin: 'https://www.linkedin.com/in/kunal-kumar-888310378',
   },
   {
-    name: 'Aryan Gupta',
-    role: 'Database Engineer & QA',
-    initials: 'AG',
+    name: 'Keshav Kumar',
+    role: 'Database Integration & QA',
+    initials: 'KK',
     color: 'from-amber-500 to-orange-600',
     bg: 'bg-amber-100 dark:bg-amber-900/30',
     text: 'text-amber-700 dark:text-amber-300',
     contributions: ['Prisma Schema', 'Testing & QA', 'Documentation'],
-    github: '#',
-    linkedin: '#',
+    github: 'https://github.com/Keshav-Kumar',
+    linkedin: 'https://www.linkedin.com/in/keshav-kumar-888310378',
   },
 ];
 
@@ -274,8 +274,17 @@ export default function BehindTheBuild() {
               {TEAM.map((member, i) => (
                 <div
                   key={member.name}
-                  className={`reveal reveal-delay-${(i % 4) + 1} rounded-2xl border border-border bg-card p-6 card-hover cursor-pointer transition-all duration-300 ${activeTeamMember === i ? 'ring-2 ring-violet-500/50' : ''}`}
-                  onClick={() => setActiveTeamMember(activeTeamMember === i ? null : i)}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={activeTeamMember === i}
+                  className={`rounded-2xl border border-border bg-card p-6 card-hover cursor-pointer transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 ${activeTeamMember === i ? 'ring-2 ring-violet-500/50' : ''}`}
+                  onClick={() => setActiveTeamMember(i)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault();
+                      setActiveTeamMember(i);
+                    }
+                  }}
                 >
                   {/* Avatar */}
                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${member.color} flex items-center justify-center text-white font-bold text-lg mb-4`}>
@@ -294,19 +303,18 @@ export default function BehindTheBuild() {
                     ))}
                   </div>
 
-                  {/* Expanded */}
-                  {activeTeamMember === i && (
-                    <div className="mt-4 pt-4 border-t border-border flex gap-3">
-                      <a href={member.github} className="text-xs text-muted-foreground hover:text-foreground transition-colors">GitHub →</a>
-                      <a href={member.linkedin} className="text-xs text-muted-foreground hover:text-foreground transition-colors">LinkedIn →</a>
+                  <div className="mt-4 pt-4 border-t border-border min-h-[2.5rem]">
+                    <div className={`flex gap-3 transition-opacity duration-300 ${activeTeamMember === i ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} aria-hidden={activeTeamMember !== i}>
+                      <a href={member.github} onClick={(event) => event.stopPropagation()} className="text-xs text-muted-foreground hover:text-foreground transition-colors">GitHub →</a>
+                      <a href={member.linkedin} onClick={(event) => event.stopPropagation()} className="text-xs text-muted-foreground hover:text-foreground transition-colors">LinkedIn →</a>
                     </div>
-                  )}
+                  </div>
                 </div>
               ))}
 
               {/* Team vibe card */}
-              <div className="reveal reveal-delay-2 rounded-2xl border border-dashed border-violet-500/30 bg-violet-500/5 p-6 flex flex-col justify-center items-center text-center">
-                <div className="text-4xl mb-3">🚀</div>
+              <div className="rounded-2xl border border-dashed border-violet-500/30 bg-violet-500/5 p-6 flex flex-col justify-center items-center text-center">
+                <div className="text-4xl mb-3">👥</div>
                 <h3 className="font-semibold mb-2">Built in Semester 2</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">
                   From idea to deployed product — PathPilot was designed, built, and shipped as our Capstone-1 project.

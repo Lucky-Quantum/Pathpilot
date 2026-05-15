@@ -274,8 +274,17 @@ export default function AboutUs() {
               {TEAM.map((member, i) => (
                 <div
                   key={member.name}
-                  className={`reveal reveal-delay-${(i % 4) + 1} rounded-2xl border border-border bg-card p-6 card-hover cursor-pointer transition-all duration-300 ${activeTeamMember === i ? 'ring-2 ring-violet-500/50' : ''}`}
-                  onClick={() => setActiveTeamMember(activeTeamMember === i ? null : i)}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={activeTeamMember === i}
+                  className={`reveal reveal-delay-${(i % 4) + 1} rounded-2xl border border-border bg-card p-6 card-hover cursor-pointer transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 ${activeTeamMember === i ? 'ring-2 ring-violet-500/50' : ''}`}
+                  onClick={() => setActiveTeamMember(i)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault();
+                      setActiveTeamMember(i);
+                    }
+                  }}
                 >
                   {/* Avatar */}
                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${member.color} flex items-center justify-center text-white font-bold text-lg mb-4`}>
@@ -294,13 +303,12 @@ export default function AboutUs() {
                     ))}
                   </div>
 
-                  {/* Expanded */}
-                  {activeTeamMember === i && (
-                    <div className="mt-4 pt-4 border-t border-border flex gap-3">
-                      <a href={member.github} className="text-xs text-muted-foreground hover:text-foreground transition-colors">GitHub →</a>
-                      <a href={member.linkedin} className="text-xs text-muted-foreground hover:text-foreground transition-colors">LinkedIn →</a>
+                  <div className="mt-4 pt-4 border-t border-border min-h-[2.5rem]">
+                    <div className={`flex gap-3 transition-opacity duration-300 ${activeTeamMember === i ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} aria-hidden={activeTeamMember !== i}>
+                      <a href={member.github} onClick={(event) => event.stopPropagation()} className="text-xs text-muted-foreground hover:text-foreground transition-colors">GitHub →</a>
+                      <a href={member.linkedin} onClick={(event) => event.stopPropagation()} className="text-xs text-muted-foreground hover:text-foreground transition-colors">LinkedIn →</a>
                     </div>
-                  )}
+                  </div>
                 </div>
               ))}
 
