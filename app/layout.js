@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { dark } from "@clerk/themes";
 import CareerCoachChat from "@/components/career-coach-chat";
+import { Info, Phone, Mail } from "lucide-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,11 +40,38 @@ export default function RootLayout({ children }) {
             <Toaster richColors />
             <CareerCoachChat />
 
-<footer className="bg-muted/50 py-12">
-  <div className="container mx-auto px-4 text-center text-gray-200">
-    <p>&copy; 2026 Pathpilot | BS CSDA IIT Patna Semester 2 Capstone Project</p>
-  </div>
-</footer>
+            {/* FOOTER */}
+            <footer className="footer">
+              {/* CENTER TAGLINE */}
+              <div className="footer-center">
+                <h2>PathPilot</h2>
+                <p>AI-powered career development platform for professional success.</p>
+              </div>
+              <br />
+              <br />
+              <hr style={{ borderColor: '#1c6b3a', margin: '20px 0' }} />
+              <br />
+              {/* BOTTOM ROW */}
+              <div className="footer-bottom">
+                {/* LEFT */}
+                <div className="footer-left">
+                  <a href="/aboutus">
+                    <Info className="mr-2" /> About Us
+                  </a>
+                  <a href="/contact">
+                    <Phone className="mr-2" /> Contact Us
+                  </a>
+                  <a href="mailto:pathpilot.forprofessionalsuccess@gmail.com">
+                    <Mail className="mr-2" /> pathpilot.forprofessionalsuccess@gmail.com
+                  </a>
+                </div>
+
+                {/* RIGHT */}
+                <div className="footer-right">
+                  © 2026 PathPilot | BS CSDA IIT Patna Semester 2 Capstone Project
+                </div>
+              </div>
+            </footer>
           </ThemeProvider>
         </body>
       </html>
