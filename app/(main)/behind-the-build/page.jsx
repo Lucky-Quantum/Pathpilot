@@ -23,8 +23,8 @@ const TEAM = [
     bg: 'bg-pink-100 dark:bg-pink-900/30',
     text: 'text-pink-700 dark:text-pink-300',
     contributions: ['UI Components', 'Responsive Design', 'User Experience'],
-    github: 'https://github.com/Kishan-Kumar',
-    linkedin: 'https://www.linkedin.com/in/kishan-kumar-888310378',
+    github: 'https://github.com/kishankumar748092-sys',
+    linkedin: 'http://www.linkedin.com/in/kishan-kumar-370356375',
   },
   {
     name: 'Manikchand Kumar',
@@ -45,8 +45,8 @@ const TEAM = [
     bg: 'bg-emerald-100 dark:bg-emerald-900/30',
     text: 'text-emerald-700 dark:text-emerald-300',
     contributions: ['Vercel Deployment', 'Supabase Setup', 'Auth & Security'],
-    github: 'https://github.com/Kunal-Kumar',
-    linkedin: 'https://www.linkedin.com/in/kunal-kumar-888310378',
+    github: 'https://github.com/Kunal8454',
+    linkedin: 'https://www.linkedin.com/in/kunal-kumar-039650381',
   },
   {
     name: 'Keshav Kumar',
@@ -187,7 +187,7 @@ export default function BehindTheBuild() {
                   Try PathPilot →
                 </button>
               </Link>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/Lucky-Quantum/Pathpilot.git" target="_blank" rel="noopener noreferrer">
                 <button className="px-6 py-3 rounded-xl border border-border hover:bg-muted font-medium transition-all duration-200">
                   View Source Code
                 </button>
