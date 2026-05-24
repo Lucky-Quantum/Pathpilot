@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
             {/* FOOTER */}
             <footer className="bg-muted/50 py-12">
               <div className="container mx-auto px-4 text-center text-gray-200">
-                <p>&copy; 2026 Pathpilot | BS-MS CSDA IIT Patna Semester 2 Capstone Project</p>
+                 <p>&copy; 2026 PathPilot · Crafted from scratch by Lucky Kumar</p>
               
               </div>
             </footer>
